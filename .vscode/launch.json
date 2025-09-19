@@ -1,26 +1,31 @@
 {
-  "version": "0.2.0",
-  "configurations": [
-    {
-      "name": "C/C++: gcc build and debug active file",
-      "type": "cppdbg",
-      "request": "launch",
-      "program": "${fileDirname}/${fileBasenameNoExtension}",
-      "args": [],
-      "stopAtEntry": false,
-      "cwd": "${fileDirname}",
-      "environment": [],
-      "externalConsole": false,
-      "MIMode": "gdb",
-      "setupCommands": [
+    "version": "2.0.0",
+    "tasks": [
         {
-          "description": "Enable pretty-printing for gdb",
-          "text": "-enable-pretty-printing",
-          "ignoreFailures": true
+            "label": "C/C++: gcc-12 build active file",
+            "type": "cppbuild",
+            "command": "/usr/bin/gcc-12",
+            "args": [
+                "-Wall",
+                "-Wextra",
+                "-Wpedantic",
+                "-g",
+                "${file}",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}",
+                "-lm"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "detail": "Build C file with warnings and math library",
+            "options": {
+                "showOutput": "always"
+            }
         }
-      ],
-      "preLaunchTask": "C/C++: gcc build active file",
-      "miDebuggerPath": "/usr/bin/gdb"
-    }
-  ]
+    ]
 }
